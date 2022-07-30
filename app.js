@@ -1,7 +1,11 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
+
+//Middle ware
 app.use(express.json());
+app.use(morgan('dev'));
 
 app.use((req, res, next) => {
   console.log('hello from middleware.');
@@ -13,6 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//Route handlers
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -39,7 +44,7 @@ const createTour = (req, res) => {
   });
 };
 
-const patchTour = (req, res) => {
+const updateTour = (req, res) => {
   res.status(200).json({
     status: 'success',
     data: 'created',
@@ -53,10 +58,69 @@ const deleteTour = (req, res) => {
   });
 };
 
-app.route('/api/v1/tours').get(getAllTours).post(createTour);
-app.route('api/v1/tours/:id').get(getTour).patch(patchTour).delete(deleteTour);
+const getAllusers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'this route not implemented yet',
+  });
+};
 
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'this route not implemented yet',
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    meddage: 'this route not implemented yet',
+  });
+};
+
+const postUser = (req, res) => {
+  res.status(200).json({
+    status: 'error',
+    message: 'this route not implemented yet',
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.status(200).json({
+    status: 'error',
+    message: 'this route not implemented yet',
+  });
+};
+
+const updateUser = (req, res) => {
+  res.status(200).json({
+    status: 'error',
+    message: 'this route not implemented yet`',
+  });
+};
+
+//routes
+const tourRouter = express.router();
+const userRouter = express.Router();
+
+tourRouter.route('/').get(getAllTours).post(createTour);
+tourRouter.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
+
+userRouter.route('/').get(getAllusers).post(createUser);
+userRouter
+  .route('/')
+  .route('/:id')
+  .get(getUser)
+  .post(postUser)
+  .patch(updateUser)
+  .delete(deleteUser);
+
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
+
+//server
 const port = 3000;
 app.listen(port, function () {
-  console.log('server is running on port ${port}');
+  console.log(`server is running on port ${port}`);
 });
