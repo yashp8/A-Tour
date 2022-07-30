@@ -101,7 +101,7 @@ const updateUser = (req, res) => {
 };
 
 //routes
-const tourRouter = express.router();
+const tourRouter = express.Router();
 const userRouter = express.Router();
 
 tourRouter.route('/').get(getAllTours).post(createTour);
@@ -109,7 +109,6 @@ tourRouter.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
 
 userRouter.route('/').get(getAllusers).post(createUser);
 userRouter
-  .route('/')
   .route('/:id')
   .get(getUser)
   .post(postUser)
