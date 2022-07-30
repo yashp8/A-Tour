@@ -10,7 +10,9 @@
   "author": "Yash Patel",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "mongoose": "^6.5.0",
     "morgan": "^1.10.0"
   }
 }

@@ -1,3 +1,22 @@
+exports.checkId = (req, res, next) => {
+  if (req.params.id < 0) {
+    return res.status(404).json({
+      status: 'error',
+      message: 'invalid id',
+    });
+  }
+  next();
+};
+
+exports.checkBody = (req, res, next) => {
+  if (!req.body) {
+    res.status(500).json({
+      status: 'error',
+    });
+  }
+  next();
+};
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
