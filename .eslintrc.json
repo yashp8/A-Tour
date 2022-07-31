@@ -20,6 +20,7 @@
     "no-process-exit": "off",
     "no-param-reassign": "off",
     "no-return-await": "off",
+    "no-plusplus": "off",
     "new-cap": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
