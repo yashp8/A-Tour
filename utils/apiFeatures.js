@@ -37,12 +37,10 @@ class APIFeatures {
   }
 
   paginate() {
-    if (this.querystring.page) {
-      const page = this.querystring.page * 1 || 1;
-      const limit = this.querystring.limit * 1 || 1;
-      const skip = (page - 1) * limit;
-      this.query = this.query.skip(skip).limit(limit);
-    }
+    const page = this.querystring.page * 1 || 1;
+    const limit = this.querystring.limit * 1 || 1;
+    const skip = (page - 1) * limit;
+    this.query = this.query.skip(skip).limit(limit);
     return this;
   }
 }
