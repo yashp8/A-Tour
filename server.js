@@ -18,12 +18,17 @@ dotenv.config({ path: './config.env' });
 const DB = process.env.DATABASE_LOCAL;
 
 mongoose.connect(DB).then(() => {
-  console.log('Database Connected 💾');
+  console.log(`Database Connected 💾`);
 });
 
 const port = process.env.PORT;
 const server = app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
+  console.log(`server is running on port ${port}
+      ____
+     ||"0||
+     ||__||
+     [.=- ] v1.0
+  `);
 });
 
 process.on('unhandledRejection', (err) => {
