@@ -15,10 +15,11 @@ dotenv.config({ path: './config.env' });
 //   process.env.DATABASE_PASSWORD,
 // );
 
+// const DB = `mongodb://docker:mongopw@localhost:55000`;
 const DB = process.env.DATABASE_LOCAL;
 
 mongoose.connect(DB).then(() => {
-  console.log(`Database Connected 💾`);
+  console.log(`Database Connected`);
 });
 
 const port = process.env.PORT;
