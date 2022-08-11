@@ -4,14 +4,20 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
+    "run:prod": "NODE_ENV=production node server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public --out-file bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yash Patel",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-mongo-sanitize": "^2.2.0",
@@ -42,5 +48,8 @@
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^2.7.1",
     "standard": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
