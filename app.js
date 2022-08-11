@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -17,6 +18,16 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
+app.use(cors());
+
+// app.use(
+//   cors({
+//     origin: 'https://www.xyz.com',
+//   }),
+// );
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 app.use(helmet());
 
