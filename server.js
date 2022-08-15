@@ -15,10 +15,11 @@ dotenv.config({ path: './config.env' });
 //   process.env.DATABASE_PASSWORD,
 // );
 
+// const DB = `mongodb://docker:mongopw@localhost:55000`;
 const DB = process.env.DATABASE_LOCAL;
 
 mongoose.connect(DB).then(() => {
-  console.log(`Database Connected 💾`);
+  console.log(`Database Connected`);
 });
 
 const port = process.env.PORT;
@@ -35,5 +36,12 @@ process.on('unhandledRejection', (err) => {
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECEIVED. Shutting down.');
+  server.close(() => {
+    console.log('Process terminated.');
   });
 });
